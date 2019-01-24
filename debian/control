@@ -2,9 +2,9 @@ Source: calico-node
 Section: devel
 Priority: optional
 Maintainer: Maximilian Falkenstein <maximilian.falkenstein@sos.ethz.ch>
-Build-Depends: debhelper (>= 11),
+Build-Depends: debhelper (>= 9),
                dh-golang,
-               golang-any,
+               golang-go,
                golang-glide
 Standards-Version: 4.2.1
 Homepage: https://github.com/projectcalico/node
