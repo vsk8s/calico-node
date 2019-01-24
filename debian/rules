@@ -1,10 +1,6 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
 
-override_dh_auto_clean:
-	glide i
-	dh_auto_clean -O--buildsystem=golang
-
 override_dh_auto_install:
 	dh_auto_install -- --no-source
 
@@ -17,6 +13,7 @@ override_dh_auto_test:
 	/bin/true
 
 override_dh_auto_build:
+	glide i
 	dh_auto_build -O--buildsystem=golang -- -ldflags "-X github.com/projectcalico/node/pkg/startup.VERSION=$(DEB_VERSION_UPSTREAM) \
                   -X github.com/projectcalico/node/vendor/github.com/projectcalico/felix/buildinfo.GitVersion=$(DEB_VERSION_UPSTREAM) \
                   -X github.com/projectcalico/node/vendor/github.com/projectcalico/felix/buildinfo.GitRevision=$(git rev-parse HEAD || echo '<unknown>')"
