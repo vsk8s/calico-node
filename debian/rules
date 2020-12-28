@@ -14,7 +14,7 @@ override_dh_auto_install:
 	dh_auto_install -- --no-source
 
 %:
-	dh $@ --buildsystem=golang --with=golang
+	dh $@ --buildsystem=golang --with=golang --builddirectory=_build
 
 override_dh_auto_test:
 	# The test suite doesn't really work outside of the provided Docker
@@ -22,5 +22,4 @@ override_dh_auto_test:
 	/bin/true
 
 override_dh_auto_build:
-	go env
 	dh_auto_build -- -tags '$(TAGS)' -ldflags '$(GO_LDFLAGS)'
